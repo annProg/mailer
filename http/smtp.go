@@ -4,10 +4,10 @@ import (
 	"log"
 	"net"
 	"net/http"
-	"net/smtp"
 	"strconv"
 	"strings"
 
+	"github.com/annprog/mailer/csmtp"
 	"github.com/annprog/mailer/email"
 	"github.com/annprog/mailer/g"
 )
@@ -131,8 +131,9 @@ func SendMailBySmtp(w http.ResponseWriter, r *http.Request, hasAttach bool) {
 		e.From = user
 	}
 
-	hp := strings.Split(server, ":")
-	auth := smtp.PlainAuth("", user, passwd, hp[0])
+	//hp := strings.Split(server, ":")
+	//auth := smtp.PlainAuth("", user, passwd, hp[0])
+	auth := csmtp.NewLoginAuth(user, passwd)
 	//暂时不支持TLS/StartTLS等加密认证
 	error := e.Send(server, auth)
 	if error != nil {

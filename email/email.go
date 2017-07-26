@@ -10,6 +10,7 @@ import (
 	"encoding/base64"
 	"errors"
 	"fmt"
+	"github.com/annprog/mailer/csmtp"
 	"io"
 	"math"
 	"math/big"
@@ -383,7 +384,7 @@ func (e *Email) Send(addr string, a smtp.Auth) error {
 	if err != nil {
 		return err
 	}
-	return smtp.SendMail(addr, a, from.Address, to, raw)
+	return csmtp.SendMail(addr, a, from.Address, to, raw)
 }
 
 // SendWithTLS sends an email with an optional TLS config.
