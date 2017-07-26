@@ -1,3 +1,5 @@
 *.exe
 mailer
+falcon-mailer
 cfg.json
+var/
