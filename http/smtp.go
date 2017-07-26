@@ -8,8 +8,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/iambocai/mailer/g"
-	"github.com/jordan-wright/email"
+	"github.com/annprog/mailer/email"
+	"github.com/annprog/mailer/g"
 )
 
 func configSmtpRoutes() {
