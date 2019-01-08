@@ -3,7 +3,10 @@ falcon-mailer
 
 falcon-sender 发送邮件到smtp服务器的接口实现，当然你也可以把它当做一个简单的httpmail接口使用也没问题:)
 
-##安装
+## About this fork
+支持 `NTLM`或`LOGIN`方式验证
+
+## 安装
 --------------------
 
 ```bash
@@ -22,7 +25,7 @@ chmod 755 control
 # if anything goes wrong, check log for reasons
 ```
 
-##配置
+## 配置
 -----------------------
 
 - whitelist: 允许发起http调用的客户端IP地址或CIDR格式的范围列表，逗号分隔
@@ -30,10 +33,10 @@ chmod 755 control
 - maxbytes: 发送带附件的邮件时，允许附件最大多大？
 - 其它应该都认识吧。。
 
-##API
+## API
 -----------------------
 
-####发送普通邮件
+#### 发送普通邮件
 
 **URL**: /api/mail
 
@@ -70,7 +73,7 @@ chmod 755 control
 ```
 
 
-####发送带附件的邮件
+#### 发送带附件的邮件
 
 **URL**: /api/attachmail
 
