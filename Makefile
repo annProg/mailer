@@ -1,6 +1,6 @@
 IMAGENAME ?= $(shell pwd |awk -F'/' '{print $$NF}')
 REGISTRY ?= registry.cn-beijing.aliyuncs.com/kubebase
-TAG ?= latest
+TAG ?= $(shell git rev-parse --short HEAD)
 IMAGE = $(REGISTRY)/$(IMAGENAME)
  
 APP ?= $(shell pwd |awk -F'/' '{print $$NF}')
@@ -19,10 +19,12 @@ all: build-docker push
 build:
 	go install
 build-docker:
-	docker build -t $(IMAGE):$(TAG) .
+	docker build -t $(IMAGE):latest .
+	docker tag $(IMAGE):latest $(IMAGE):$(TAG)
  
 push:
 	docker push $(IMAGE):$(TAG)
+	docker push $(IMAGE):latest
  
 # 本地调试
 debug: build-docker run
