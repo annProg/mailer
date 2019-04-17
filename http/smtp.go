@@ -30,6 +30,7 @@ func SendMailBySmtp(w http.ResponseWriter, r *http.Request, hasAttach bool) {
 		passwd string
 	)
 
+	log.Println("[INFO] remoteaddr: " + r.RemoteAddr)
 	addr := strings.Split(r.RemoteAddr, ":")[0]
 	allowList := strings.Split(g.Config().Http.WhiteList, ",")
 	authorized := isValid(addr, allowList)
