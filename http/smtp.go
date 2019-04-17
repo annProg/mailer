@@ -40,7 +40,7 @@ func SendMailBySmtp(w http.ResponseWriter, r *http.Request, hasAttach bool) {
 
 	//授权检查
 	if authorized == false && authorized2 == false {
-		http.Error(w, addr+" and "+realip+" not in whitelist", http.StatusBadRequest)
+		http.Error(w, addr+" or "+realip+" not in whitelist", http.StatusBadRequest)
 		return
 	}
 
