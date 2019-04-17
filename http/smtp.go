@@ -31,6 +31,7 @@ func SendMailBySmtp(w http.ResponseWriter, r *http.Request, hasAttach bool) {
 	)
 
 	log.Println("[INFO] remoteaddr: " + r.RemoteAddr)
+	log.Println("[INFO] x-forwarded-for: " + r.Header.Get("X-Forwarded-For"))
 	addr := strings.Split(r.RemoteAddr, ":")[0]
 	allowList := strings.Split(g.Config().Http.WhiteList, ",")
 	authorized := isValid(addr, allowList)
