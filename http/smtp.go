@@ -36,7 +36,7 @@ func SendMailBySmtp(w http.ResponseWriter, r *http.Request, hasAttach bool) {
 
 	//授权检查
 	if authorized == false {
-		http.Error(w, "remote not in whitelist", http.StatusBadRequest)
+		http.Error(w, addr+" not in whitelist", http.StatusBadRequest)
 		return
 	}
 
